@@ -14,7 +14,7 @@ public class GoodPizza implements IPizza {
     private int price;
     private String name;
 
-    public GoodPizza(@Value("10") int price, @Value("good") String name) {
+    public GoodPizza(@Value("15") int price, @Value("good") String name) {
         super();
         this.price = price;
         this.name = name;
