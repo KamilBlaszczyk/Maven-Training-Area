@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 //@Qualifier("elastic")
-@Primary
+//@Primary
 public class ElasticSides implements IShoe {
 
     private int price;
