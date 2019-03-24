@@ -2,12 +2,15 @@ package implementation;
 
 import api.IOrder;
 import api.IPancake;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Order implements IOrder {
 
     private IPancake pancake;
 
-    public Order(IPancake pancake) {
+    public Order(@Value("#{pancakeBrownie}") IPancake pancake) {
         super();
         this.pancake = pancake;
     }
