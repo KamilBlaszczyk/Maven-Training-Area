@@ -4,6 +4,8 @@ import com.blaszczyk.implementation.Bicycle;
 import com.blaszczyk.implementation.Car;
 import com.blaszczyk.implementation.Plane;
 import com.blaszczyk.implementation.Ship;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,6 +15,8 @@ import java.util.Collections;
 import java.util.Comparator;
 
 public class Options {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(Options.class);
 
     public static void returnSpeedestVehicle(Vehicle v1, Vehicle v2) {
         if(v1.getMaxSpeed()>v2.getMaxSpeed()){
@@ -60,21 +64,27 @@ public class Options {
 
         while(!end){
 
-            System.out.println("\n" + "*** Menu ***");
-            System.out.println("1 - CAR");
-            System.out.println("2 - SHIP");
-            System.out.println("3 - PLANE");
-            System.out.println("4 - BICYCLE");
-            System.out.println("5 - ALL");
-            System.out.println("6 - EXIT");
+            if(chose > 6)
+                end = true;
+
+            LOGGER.info("\n \n *** Menu ***"
+                    +  "\n \n Choose the option:"
+                    +  "\n 1 - CAR"
+                    +  "\n 2 - SHIP"
+                    +  "\n 3 - PLANE"
+                    +  "\n 4 - BICYCLE"
+                    +  "\n 5 - ALL"
+                    +  "\n 6 - EXIT \n");
 
             while(!correct) {
                 try{
                     chose = Integer.parseInt(load.readLine());
                 }catch (NumberFormatException n) {
-                    System.out.println("Enter the correct option" + "\n" );
+                    LOGGER.info("\n ERROR"
+                            +  "\n Enter the correct option");
                 } catch (IOException e) {
-                    System.out.println("Error");
+                    LOGGER.info("\n ERROR"
+                            +  "\n ERROR");
                 }
 
                 correct = chose == 1? false:true;
